@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CustomizationAssetDecal" load_steps=3 format=3 uid="uid://c15ve6fh4e1fx"]
+
+[ext_resource type="Texture2D" uid="uid://dj5pcy7yadb6h" path="res://Assets/Characters/Textures/Decals/T_decal_empty.png" id="1_105hs"]
+[ext_resource type="Script" uid="uid://bbnem4s0in6yn" path="res://Scripts/Customization/customization_asset_decal.gd" id="1_d7458"]
+
+[resource]
+script = ExtResource("1_d7458")
+ressource = ExtResource("1_105hs")
+name = "decal_top_bare"
+display_name = "No Decal"
+part = 8
+metadata/_custom_type_script = "uid://bortdiketmnc3"

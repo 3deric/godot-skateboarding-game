@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CustomizationAssetMesh" load_steps=3 format=3 uid="uid://c8h2ueft7yeit"]
+
+[ext_resource type="ArrayMesh" uid="uid://cvvmnvae64onp" path="res://Assets/Characters/Meshes/Hair/SK_char_hair_m_messy.res" id="1_a55hw"]
+[ext_resource type="Script" uid="uid://b2qea3ehvt2a3" path="res://Scripts/Customization/customization_asset_mesh.gd" id="2_a55hw"]
+
+[resource]
+script = ExtResource("2_a55hw")
+ressource = ExtResource("1_a55hw")
+name = "hair_short"
+display_name = "Short Messy"
+metadata/_custom_type_script = "uid://bortdiketmnc3"

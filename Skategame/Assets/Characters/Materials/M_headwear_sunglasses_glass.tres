@@ -5,8 +5,8 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_i4u3s")
-shader_parameter/base_color = Color(0.16165006, 0.1966534, 0.3263247, 1)
-shader_parameter/Alpha = 0.615
+shader_parameter/base_color = Color(0.027523829, 0.039770447, 0.08943532, 1)
+shader_parameter/Alpha = 0.85
 shader_parameter/Metallic = 0.0
 shader_parameter/Roughness = 0.05
 shader_parameter/Normal_Depth = 0.0

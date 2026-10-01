@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CustomizationAssetMesh" load_steps=2 format=3 uid="uid://b6khh3y7sjncv"]
+
+[ext_resource type="Script" uid="uid://b2qea3ehvt2a3" path="res://Scripts/Customization/customization_asset_mesh.gd" id="1_yngvd"]
+
+[resource]
+script = ExtResource("1_yngvd")
+name = "hair_bare"
+display_name = "Bald"
+metadata/_custom_type_script = "uid://bortdiketmnc3"

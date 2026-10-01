@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CustomizationAssetDecal" load_steps=2 format=3 uid="uid://bru2txiodop8b"]
+
+[ext_resource type="Script" uid="uid://bbnem4s0in6yn" path="res://Scripts/Customization/customization_asset_decal.gd" id="2_c6q81"]
+
+[resource]
+script = ExtResource("2_c6q81")
+name = "decal_board_bare"
+display_name = "No Decal"
+part = 9
+metadata/_custom_type_script = "uid://bortdiketmnc3"

@@ -3,159 +3,112 @@ extends Node
 
 static var instance: CustomizationManager
 
-signal color_updated(part: CharacterData.CharacterPart, sub: String, color: Color)
-signal decal_updated(part: CharacterData.CharacterPart, index: int)
-signal mesh_updated(part: CharacterData.CharacterPart, index: int)
-signal float_updated(part: CharacterData.CharacterPart, sub: String, value: float)
+signal color_updated(part: CustomizationPart.Part, sub: String, color: Color)
+signal decal_updated(part: CustomizationPart.Part, index: int)
+signal mesh_updated(part: CustomizationPart.Part, index: int)
+signal float_updated(part: CustomizationPart.Part, sub: String, value: float)
 signal customization_updated()
+
+const SAVE_PATH = "user://character_data.json"
+var resources : Dictionary = {}
 
 var character_data : CharacterData
 
-var board_decals = [
-	preload ("res://Assets/Characters/Textures/Decals/T_decal_empty.png"),
-	preload ("res://Assets/Characters/Textures/Decals/T_skateboard_deck.jpg"),
-	preload ("res://Assets/Characters/Textures/Decals/T_skateboard_deck_cat.jpg")
-	]
-
-var top_decals = [
-	preload ("res://Assets/Characters/Textures/Decals/T_decal_empty.png"),
-	preload ("res://Assets/Characters/Textures/Decals/T_Cloth_Decals_Pretzelman.png"),
-	preload ("res://Assets/Characters/Textures/Decals/T_Cloth_Decals_Aluminium.png"),
-	preload ("res://Assets/Characters/Textures/Decals/T_Cloth_Decals_Cassette.png"),
-	preload ("res://Assets/Characters/Textures/Decals/T_Cloth_Decals_Earth.png")
-	]
-
-var hair_meshes = [
-	preload ("res://Assets/Characters/Meshes/Hair/SK_char_hair_m_messy.res"),
-	preload ("res://Assets/Characters/Meshes/Hair/SK_char_hair_f_ponytail.res")
-	]
-
-var hair_meshes_female = [
-	preload ("res://Assets/Characters/Meshes/Hair/SK_char_hair_f_ponytail.res")
-	]
-
-var top_meshes = [
-	preload ("res://Assets/Characters/Meshes/Clothes/SK_char_clothes_top_hoodie.res"),
-	preload ("res://Assets/Characters/Meshes/Clothes/SK_char_clothes_top_shirt.res")
-	]
-
-var bottom_meshes = [
-	preload ("res://Assets/Characters/Meshes/Clothes/SK_char_clothes_bottom_jeans.res"),
-	preload ("res://Assets/Characters/Meshes/Clothes/SK_char_clothes_bottom_shorts.res")
-	]
-
-var shoe_meshes = [
-	preload ("res://Assets/Characters/Meshes/Clothes/SK_char_clothes_shoes_flat.res"),
-	preload ("res://Assets/Characters/Meshes/Clothes/SK_char_clothes_shoes_sneakers.res"),
-	preload ("res://Assets/Characters/Meshes/Clothes/Sk_Char_clothes_shoes_boots.res"),
-	preload ("res://Assets/Characters/Meshes/Clothes/SK_char_clothes_shoes_flipflops.res")
-	]
-	
-var helmet_meshes = [
-	preload ("res://Assets/Characters/Meshes/Clothes/SK_char_helmet_base.res"),
-	preload ("res://Assets/Characters/Meshes/Clothes/SK_char_helmet_godot.res")
-	]
-	
-var glasses_meshes = [
-	preload ("res://Assets/Characters/Meshes/Clothes/SK_char_headwear_sunglasses.res")
-]
-
 func _ready() -> void:
 	instance = self
-	character_data = CharacterData.new()
-
+	_preload_customization_assets()
+	character_data = _load_character_data()
+	save_character_data()
+	
+func save_character_data() -> void:
+	var file : FileAccess = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	var save_dict = {}
+	save_dict["game_version"] = ProjectSettings.get_setting("application/config/version") 
+	save_dict["char_name"] = character_data.char_name
+	save_dict["customization_data"] = character_data.customization_data
+	file.store_string(JSON.stringify(save_dict))
+	file.close()
+	
+func _load_character_data() -> CharacterData:
+	var data = CharacterData.new()
+	if not FileAccess.file_exists(SAVE_PATH):
+		return data
+	var file : FileAccess = FileAccess.open(SAVE_PATH, FileAccess.READ)
+	var text : String = file.get_as_text()
+	file.close()
+	var parsed = JSON.parse_string(text)
+	if parsed["game_version"] != ProjectSettings.get_setting("application/config/version"):
+		return data
+	data.char_name = parsed["char_name"]
+	for part in parsed["customization_data"]:
+		var part_dict = _load_subdata(parsed["customization_data"][part])
+		data.customization_data[int(part)] = part_dict
+	return data
+	
+func _load_subdata(data : Dictionary) -> Dictionary:
+	var result = {}
+	for key in data:
+		if key.is_valid_int():
+			var value = int(data[key])
+		if key == "mesh" or key == "gender" or key.contains("decal_"):
+			result[key] = int(data[key])
+			continue
+		if key == "base" or key == "accent" or key == "detail" or key == "eyes":
+			var col = str(data[key]).replace("(", "").replace(")", "").split(",")
+			result[key] = Color(float(col[0]), float(col[1]), float(col[2]),float(col[3]))
+			continue
+		if key == "size" or key == "color":
+			result[key] = float(data[key])
+			continue	
+	return result
 
 func reset_character() -> void:
 	character_data = CharacterData.new()
-	customization_updated.emit()
+	#customization_updated.emit()
 
 
-func update_color(part: CharacterData.CharacterPart,sub: String, color: Color ) -> void:
-	match part:
-		CharacterData.CharacterPart.Body:
-			match sub: 
-				'eyes':
-					character_data.eye_color = color
-		CharacterData.CharacterPart.Hair:
-			match sub:
-				'color':
-					print("updating color")
-					character_data.hair_color = color
-		CharacterData.CharacterPart.Top:
-			match sub:
-				'base':
-					character_data.top_base_color = color
-				'accent':
-					character_data.top_accent_color = color
-				'detail':
-					character_data.top_detail_color = color
-		CharacterData.CharacterPart.Bottom:
-			match sub:
-				'base':
-					character_data.bottom_base_color = color
-				'accent':
-					character_data.bottom_accent_color = color
-				'detail':
-					character_data.bottom_detail_color = color
-		CharacterData.CharacterPart.Shoes:
-			match sub:
-				'base':
-					character_data.shoes_base_color = color
-				'accent':
-					character_data.shoes_accent_color = color
-				'detail':
-					character_data.shoes_detail_color = color
-		CharacterData.CharacterPart.Board:
-			match sub:
-				'wheels':
-					character_data.board_wheels_color = color
-				'accent':
-					character_data.board_accent_color = color
-				'metal':
-					character_data.board_metal_color= color
-
+func update_color(part: CustomizationPart.Part,sub: String, color: Color ) -> void:
+	character_data.customization_data[part][sub] = color
 	color_updated.emit(part, sub, color)
 	#customization_updated.emit()
 	
 
-func update_mesh(part: CharacterData.CharacterPart, index: int) -> void:
-	match part:
-		CharacterData.CharacterPart.Hair:
-			character_data.hair_mesh = index
-		CharacterData.CharacterPart.Top:
-			character_data.top_mesh = index
-		CharacterData.CharacterPart.Bottom:
-			character_data.bottom_mesh = index
-		CharacterData.CharacterPart.Shoes:
-			character_data.shoes_mesh = index
-		CharacterData.CharacterPart.Helmet:
-			character_data.helmet_mesh = index
-		CharacterData.CharacterPart.Glasses:
-			character_data.glasses_mesh
+func update_mesh(part: CustomizationPart.Part, index: int) -> void:
+	character_data.customization_data[part]["mesh"] = index
 	mesh_updated.emit(part, index)
 	#customization_updated.emit()
 	
 
-func update_decal(part: CharacterData.CharacterPart, index: int) -> void:
-	match part:
-		CharacterData.CharacterPart.Top:
-			character_data.top_decal = index
-		CharacterData.CharacterPart.Board:
-			character_data.board_decal = index
-	decal_updated.emit(part, index)
+func update_decal(part: CustomizationPart.Part, decal_part : CustomizationPart.Part, index: int) -> void:
+	if part == CustomizationPart.Part.TOP:
+		character_data.customization_data[part]['decal_top'] = index
+	if part == CustomizationPart.Part.BOARD:
+		character_data.customization_data[part]['decal_board'] = index
+	decal_updated.emit(part, decal_part, index)
 	#customization_updated.emit()
 
 
-func update_float(part: CharacterData.CharacterPart, sub : String ,value: float) -> void:
-	match part:
-		CharacterData.CharacterPart.Body:
-			match sub:
-				'size':
-					character_data.size = value
-				'skin_color':
-					character_data.skin_color = value
-				'gender':
-					character_data.gender = value
+func update_float(part: CustomizationPart.Part, sub : String ,value: float) -> void:
+	character_data.customization_data[part][sub] = value
 	float_updated.emit(part, sub, value)
 	#customization_updated.emit()
 		
+func _preload_customization_assets() -> void:
+	var dir = DirAccess.open("res://Assets/Characters/Customization")
+	if dir == null:
+		return
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		if not dir.current_is_dir() and file_name.ends_with(".tres"):
+			var resource : CustomizationAsset = load("res://Assets/Characters/Customization/" + file_name) as CustomizationAsset
+			if resource:
+				if not resources.has(resource.part):
+					resources[resource.part] = []
+				resources[resource.part].append(resource)
+		file_name = dir.get_next()
+	dir.list_dir_end()
+	for key in resources:
+		resources[key].sort_custom(func(a, b):
+			return a.resource_path.get_file().to_lower() < b.resource_path.get_file().to_lower()
+)

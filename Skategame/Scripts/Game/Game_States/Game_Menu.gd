@@ -14,6 +14,7 @@ func enter() -> void:
 	
 func exit() -> void:
 	main_game.main_menu.set_visibility(false)
+	CustomizationManager.instance.save_character_data()
 	pass
 	
 func _start_level(_level : String):

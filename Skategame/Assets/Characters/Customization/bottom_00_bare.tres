@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CustomizationAssetMesh" load_steps=2 format=3 uid="uid://bu1y8co7axjxd"]
+
+[ext_resource type="Script" uid="uid://b2qea3ehvt2a3" path="res://Scripts/Customization/customization_asset_mesh.gd" id="1_thwe8"]
+
+[resource]
+script = ExtResource("1_thwe8")
+name = "bottom_bare"
+display_name = "Underwear"
+part = 4
+metadata/_custom_type_script = "uid://bortdiketmnc3"

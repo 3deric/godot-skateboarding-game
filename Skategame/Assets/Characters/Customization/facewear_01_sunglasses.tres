@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CustomizationAssetMesh" load_steps=3 format=3 uid="uid://c4lpv4t51cq2b"]
+
+[ext_resource type="ArrayMesh" uid="uid://di30yonrkv3wc" path="res://Assets/Characters/Meshes/Clothes/SK_char_headwear_sunglasses.res" id="1_h12vh"]
+[ext_resource type="Script" uid="uid://b2qea3ehvt2a3" path="res://Scripts/Customization/customization_asset_mesh.gd" id="2_h12vh"]
+
+[resource]
+script = ExtResource("2_h12vh")
+ressource = ExtResource("1_h12vh")
+name = "facewear_sunglasses"
+display_name = "Sunglasses"
+part = 2
+metadata/_custom_type_script = "uid://bortdiketmnc3"

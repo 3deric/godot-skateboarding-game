@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CustomizationAssetDecal" load_steps=3 format=3 uid="uid://clarlexuhwo5m"]
+
+[ext_resource type="Script" uid="uid://bbnem4s0in6yn" path="res://Scripts/Customization/customization_asset_decal.gd" id="1_bwoi6"]
+[ext_resource type="Texture2D" uid="uid://cogy0y4u7aev" path="res://Assets/Characters/Textures/Decals/T_skateboard_deck.jpg" id="1_yrehi"]
+
+[resource]
+script = ExtResource("1_bwoi6")
+ressource = ExtResource("1_yrehi")
+name = "decal_board_style"
+display_name = "Style"
+part = 9
+metadata/_custom_type_script = "uid://bortdiketmnc3"

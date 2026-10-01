@@ -58,6 +58,7 @@ func _init_player() -> void:
 		return
 	entity_root.add_child(player)
 	player.init()
+	CustomizationManager.instance.customization_updated.emit() # load customization data
 	
 func _init_interface() -> void:
 	var menu_scene : PackedScene = ResourceLoader.load(MAIN_MENU_UID) as PackedScene

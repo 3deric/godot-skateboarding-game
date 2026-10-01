@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CustomizationAssetMesh" load_steps=3 format=3 uid="uid://ca7cvh0nl6w41"]
+
+[ext_resource type="ArrayMesh" uid="uid://b3621qs5rtb12" path="res://Assets/Characters/Meshes/Clothes/SK_char_clothes_bottom_jeans.res" id="1_07dcm"]
+[ext_resource type="Script" uid="uid://b2qea3ehvt2a3" path="res://Scripts/Customization/customization_asset_mesh.gd" id="2_382tv"]
+
+[resource]
+script = ExtResource("2_382tv")
+ressource = ExtResource("1_07dcm")
+name = "bottom_pants"
+display_name = "Pants"
+part = 4
+metadata/_custom_type_script = "uid://bortdiketmnc3"

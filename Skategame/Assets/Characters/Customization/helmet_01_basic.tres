@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CustomizationAssetMesh" load_steps=3 format=3 uid="uid://ciohwr0cbn8t5"]
+
+[ext_resource type="ArrayMesh" uid="uid://cy7rfr2plf84k" path="res://Assets/Characters/Meshes/Clothes/SK_char_helmet_base.res" id="1_6pq06"]
+[ext_resource type="Script" uid="uid://b2qea3ehvt2a3" path="res://Scripts/Customization/customization_asset_mesh.gd" id="2_6pq06"]
+
+[resource]
+script = ExtResource("2_6pq06")
+ressource = ExtResource("1_6pq06")
+name = "helmet_basic"
+display_name = "Basis"
+part = 1
+metadata/_custom_type_script = "uid://bortdiketmnc3"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CustomizationAssetDecal" load_steps=3 format=3 uid="uid://cqw7oem75ov18"]
+
+[ext_resource type="Texture2D" uid="uid://xnc72wt2kl4w" path="res://Assets/Characters/Textures/Decals/T_Cloth_Decals_Cassette.png" id="1_apwgs"]
+[ext_resource type="Script" uid="uid://bbnem4s0in6yn" path="res://Scripts/Customization/customization_asset_decal.gd" id="2_y1ml8"]
+
+[resource]
+script = ExtResource("2_y1ml8")
+ressource = ExtResource("1_apwgs")
+name = "decal_top_cassette"
+display_name = "Cassette Tape"
+part = 8
+metadata/_custom_type_script = "uid://bortdiketmnc3"

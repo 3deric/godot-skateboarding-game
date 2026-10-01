@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CustomizationAssetMesh" load_steps=3 format=3 uid="uid://djcc1gb0i7lrg"]
+
+[ext_resource type="ArrayMesh" uid="uid://chik7dwtixg7f" path="res://Assets/Characters/Meshes/Clothes/SK_char_clothes_shoes_sneakers.res" id="1_q18jt"]
+[ext_resource type="Script" uid="uid://b2qea3ehvt2a3" path="res://Scripts/Customization/customization_asset_mesh.gd" id="2_lslnq"]
+
+[resource]
+script = ExtResource("2_lslnq")
+ressource = ExtResource("1_q18jt")
+name = "shoes_sneakers"
+display_name = "Sneakers"
+part = 5
+metadata/_custom_type_script = "uid://bortdiketmnc3"

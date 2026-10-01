@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CustomizationAssetMesh" load_steps=2 format=3 uid="uid://k1ymk4pq7gj3"]
+
+[ext_resource type="Script" uid="uid://b2qea3ehvt2a3" path="res://Scripts/Customization/customization_asset_mesh.gd" id="1_njsaw"]
+
+[resource]
+script = ExtResource("1_njsaw")
+name = "helmet_bare"
+display_name = "No Helmet (really?)"
+part = 1
+metadata/_custom_type_script = "uid://bortdiketmnc3"
