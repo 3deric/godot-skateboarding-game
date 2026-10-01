@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_thwe8")
 name = "bottom_bare"
-display_name = "Bare"
+display_name = "Underwear"
 part = 4
 metadata/_custom_type_script = "uid://bortdiketmnc3"

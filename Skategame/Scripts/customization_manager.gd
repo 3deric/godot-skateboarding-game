@@ -10,7 +10,6 @@ signal float_updated(part: CustomizationPart.Part, sub: String, value: float)
 signal customization_updated()
 
 const SAVE_PATH = "user://character_data.json"
-#var resources : Array[CustomizationAsset] = []
 var resources : Dictionary = {}
 
 var character_data : CharacterData

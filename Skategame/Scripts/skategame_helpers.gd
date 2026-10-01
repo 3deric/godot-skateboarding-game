@@ -27,7 +27,7 @@ static func get_path_position(_path: Path3D, _offset : float):
 	
 static func get_path_upvector(_path: Path3D, _offset: float):
 	var _curve : Curve3D = _path.curve
-	return _curve.sample_baked_up_vector(_offset)
+	return _curve.sample_baked_up_vector(_offset, true)
 
 static func get_path_tangent(_path: Path3D, _offset: float): #returns the curve tangent
 	if !_path:
