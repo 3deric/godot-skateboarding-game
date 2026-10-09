@@ -1,13 +1,13 @@
 class_name CharacterRagdoll
 extends Node
 
-@onready var physical_bone_simulator_3d: PhysicalBoneSimulator3D = $"../../Character_Visual/Char_Skeleton/Skeleton3D/PhysicalBoneSimulator3D"
-@onready var physical_bone_def_hips: PhysicalBone3D = $"../../Character_Visual/Char_Skeleton/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone DEF-spine"
-@onready var physical_bone_def_board: PhysicalBone3D = $"../../Character_Visual/Char_Skeleton/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone DEF-board"
+@onready var physical_bone_simulator_3d: PhysicalBoneSimulator3D = $"../../Character_Visual/Char_Physics/Skeleton3D/PhysicalBoneSimulator3D"
+@onready var physical_bone_def_hips: PhysicalBone3D = $"../../Character_Visual/Char_Physics/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone DEF-spine"
+@onready var physical_bone_def_board: PhysicalBone3D = $"../../Character_Visual/Char_Physics/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone DEF-board"
 var active : bool = false
 
-#func _process(delta: float) -> void:
-	#_debug_ragdoll()
+func _process(delta: float) -> void:
+	_debug_ragdoll()
 		
 		
 func _debug_ragdoll() -> void:
