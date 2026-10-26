@@ -25,9 +25,10 @@ func _ready():
 		func(x): return x is PhysicalBone3D
 	)
 	physical_skeleton.skeleton_updated.connect(self._on_skeleton_updated)
+	set_start_simulation(Vector3.ZERO)
 
 func _physics_process(delta):
-	_debug_ragdoll()
+	#_debug_ragdoll()
 	self._delta = delta
 
 

@@ -1,15 +1,15 @@
 class_name CharacterCustomization
 extends Node
 
-@onready var body_mesh : MeshInstance3D = $"../../Character_Visual/Char_Skeleton/Skeleton3D/char_body"
-@onready var top_mesh : MeshInstance3D = $"../../Character_Visual/Char_Skeleton/Skeleton3D/char_top"
-@onready var bottom_mesh : MeshInstance3D = $"../../Character_Visual/Char_Skeleton/Skeleton3D/char_bottom"
-@onready var shoes_mesh : MeshInstance3D = $"../../Character_Visual/Char_Skeleton/Skeleton3D/char_shoes"
-@onready var board_mesh : MeshInstance3D = $"../../Character_Visual/Char_Skeleton/Skeleton3D/char_board"
-@onready var hair_mesh : MeshInstance3D = $"../../Character_Visual/Char_Skeleton/Skeleton3D/char_hair"
-@onready var helmet_mesh : MeshInstance3D =  $"../../Character_Visual/Char_Skeleton/Skeleton3D/char_helmet"
-@onready var glasses_mesh : MeshInstance3D = $"../../Character_Visual/Char_Skeleton/Skeleton3D/char_headwear"
-@onready var char_skeleton: Node3D = $"../../Character_Visual/Char_Skeleton"
+@onready var body_mesh : MeshInstance3D = $"../../Character_Visual/Char_Interpolated/Skeleton3D/char_body"
+@onready var top_mesh : MeshInstance3D = $"../../Character_Visual/Char_Interpolated/Skeleton3D/char_top"
+@onready var bottom_mesh : MeshInstance3D = $"../../Character_Visual/Char_Interpolated/Skeleton3D/char_bottom"
+@onready var shoes_mesh : MeshInstance3D = $"../../Character_Visual/Char_Interpolated/Skeleton3D/char_shoes"
+@onready var board_mesh : MeshInstance3D = $"../../Character_Visual/Char_Interpolated/Skeleton3D/char_board"
+@onready var hair_mesh : MeshInstance3D = $"../../Character_Visual/Char_Interpolated/Skeleton3D/char_hair"
+@onready var helmet_mesh : MeshInstance3D =  $"../../Character_Visual/Char_Interpolated/Skeleton3D/char_helmet"
+@onready var glasses_mesh : MeshInstance3D = $"../../Character_Visual/Char_Interpolated/Skeleton3D/char_headwear"
+@onready var char_skeleton: Node3D = $"../../Character_Visual/Char_Interpolated"
 const BODY_MALE : Material = preload("res://Assets/Characters/Materials/M_char_male_body_colorable.tres")
 const BODY_FEMALE : Material = preload("res://Assets/Characters/Materials/M_char_female_body_colorable.tres")
 
