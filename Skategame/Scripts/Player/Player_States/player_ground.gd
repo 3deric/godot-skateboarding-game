@@ -2,6 +2,8 @@ class_name CharacterStateGround
 extends CharacterState
 
 func enter() -> void:
+	if state.previous_state.name == "Player_Air":
+		anim.set_ground_landed()
 	input.input_buffer.clear()
 	
 func exit() -> void:

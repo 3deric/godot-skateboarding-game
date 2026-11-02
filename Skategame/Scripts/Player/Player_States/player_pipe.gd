@@ -1,7 +1,9 @@
 extends CharacterStateGround
 
 func enter() -> void:
-	pass
+	if state.previous_state.name == "Player_Air" or state.previous_state.name == "Player_Pipesnap":
+		anim.set_ground_landed()
+	input.input_buffer.clear()
 	
 func exit() -> void:
 	pass
