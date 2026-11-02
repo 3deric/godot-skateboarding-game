@@ -22,6 +22,8 @@ gdscript/warnings/inferred_declaration=1
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 
@@ -109,6 +111,7 @@ Esc={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
 global_illumination/gi/use_half_resolution=true
 textures/default_filters/anisotropic_filtering_level=0

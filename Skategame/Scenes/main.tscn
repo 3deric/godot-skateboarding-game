@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c64uo125g4ixe"]
+[gd_scene load_steps=11 format=3 uid="uid://c64uo125g4ixe"]
 
 [ext_resource type="Script" uid="uid://6sh54e51ice" path="res://Scripts/Game/main_game.gd" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://cf8u014jv4ue8" path="res://Scripts/Game/game_statemachine.gd" id="2_bo1nx"]
@@ -7,6 +7,14 @@
 [ext_resource type="Script" uid="uid://cun8em0lnbss7" path="res://Scripts/Game/Game_States/Game_Menu.gd" id="5_6bp64"]
 [ext_resource type="Script" uid="uid://boq4o7gek4jdn" path="res://Scripts/Game/Game_States/Game_Level.gd" id="6_344ge"]
 [ext_resource type="Script" uid="uid://w03csletrpk5" path="res://Scripts/customization_manager.gd" id="7_6bp64"]
+[ext_resource type="Shader" uid="uid://eeocsjpvvvs2" path="res://Assets/Materials/pixelated_viewport.gdshader" id="8_344ge"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_344ge"]
+shader = ExtResource("8_344ge")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ynf5e"]
+size = Vector2(1280, 720)
+center_offset = Vector3(640, 360, 0)
 
 [node name="Main" type="Node"]
 process_mode = 3
@@ -109,3 +117,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 mouse_behavior_recursive = 1
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+material = SubResource("ShaderMaterial_344ge")
+mesh = SubResource("QuadMesh_ynf5e")
