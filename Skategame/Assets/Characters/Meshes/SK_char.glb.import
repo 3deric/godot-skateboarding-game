@@ -10321,6 +10321,11 @@ _subresources={
 }
 },
 "materials": {
+"Bake_Hoodie_UCU": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/Characters/Materials/M_top_hoodie.tres",
+"use_external/path": "uid://mddnxeq6hgdi"
+},
 "M_bottom_jeans": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Assets/Characters/Materials/M_bottom_jeans.tres",
@@ -10360,11 +10365,6 @@ _subresources={
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Assets/Characters/Materials/M_skateboard.tres",
 "use_external/path": "uid://j71olv18wya8"
-},
-"M_top_hoodie": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://Assets/Characters/Materials/M_top_hoodie.tres",
-"use_external/path": "uid://mddnxeq6hgdi"
 }
 },
 "meshes": {

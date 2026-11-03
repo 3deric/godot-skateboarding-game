@@ -46,6 +46,7 @@ func _ground_check() -> void:
 			return
 		if _coll_info.is_in_group('pipe'):
 			transitioned.emit(self, "Player_Pipe")
+			anim.set_ground_landed()
 			return
 		if ctrl.up_direction.dot(Vector3.UP) < 0.5:
 			return

@@ -183,7 +183,6 @@ func set_air_trick():
 		return
 		
 func set_grind_trick():
-	print(Char_Input.input_buffer.get_last_input())
 	if Char_Input.input_buffer.get_last_input() == Char_Input.Action.GRIND:
 		_start_trick(available_grind_tricks)
 		

@@ -2,12 +2,12 @@ class_name CharacterStateGround
 extends CharacterState
 
 func enter() -> void:
-	if state.previous_state.name == "Player_Air":
+	if state.previous_state.name == "Player_Air" or state.previous_state.name == "Player_Pipesnap_Air":
 		anim.set_ground_landed()
 	input.input_buffer.clear()
 	
 func exit() -> void:
-	pass
+	anim.reset_ground_landed()
 
 func physics_update(_delta : float):
 	_ground_movement(_delta, true)

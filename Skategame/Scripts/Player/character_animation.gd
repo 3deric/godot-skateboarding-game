@@ -29,8 +29,8 @@ func init(is_playing : bool) -> void:
 	
 func _process(delta: float) -> void:
 	var _input = Char_Input.input
-	anim_blend = anim_blend.lerp(Vector2(_input.x, _input.y), delta * ANIM_INTERP_SPEED)	
-		
+	anim_blend = anim_blend.lerp(Vector2(_input.x, _input.y + _input.z), delta * ANIM_INTERP_SPEED)
+
 func reset():
 	anim_tree.set('parameters/conditions/is_setup', false)
 	anim_tree.set('parameters/conditions/is_riding', false)
@@ -60,14 +60,13 @@ func reset_vis_transform(_transform : Transform3D) -> void:
 
 func animation_handler_ground_pipe(_delta : float, _velocity : Vector3):
 	pass
-	#if _velocity.length() > 0.05:
-		#anim_tree.set('parameters/conditions/is_riding', true)
-		#anim_tree.set('parameters/conditions/is_stopped', false)
-	#else:
-		#anim_tree.set('parameters/conditions/is_riding', false)
-		#anim_tree.set('parameters/conditions/is_stopped', true)
-	#anim_tree.set('parameters/Ground/blend_position', anim_blend)
-	#anim_tree.set('parameters/conditions/is_landed', false)
+	if _velocity.length() > 0.05:
+		anim_tree.set('parameters/conditions/is_riding', true)
+		anim_tree.set('parameters/conditions/is_stopped', false)
+	else:
+		anim_tree.set('parameters/conditions/is_riding', false)
+		anim_tree.set('parameters/conditions/is_stopped', true)
+	anim_tree.set('parameters/Ground/blend_position', anim_blend)
 	
 func set_ground_animation():
 	anim_tree.set('parameters/conditions/is_riding', true)
@@ -81,6 +80,9 @@ func set_ground_landed():
 	anim_tree.set('parameters/conditions/is_stopped', false)
 	anim_tree.set('parameters/conditions/is_trick0', false)
 	anim_tree.set('parameters/conditions/is_trick1', false)
+	
+func reset_ground_landed():
+	anim_tree.set('parameters/conditions/is_landed', false)
 	
 func set_trick_animation(animation: String) -> void:
 	anim_tree.set('parameters/conditions/is_riding', false)
