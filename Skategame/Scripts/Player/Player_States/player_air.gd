@@ -13,8 +13,6 @@ func exit():
 	tricks.set_end_trick()
 
 func physics_update(_delta : float):
-	if anim.get_tree_param('is_riding'):
-		anim.set_tree_param('is_riding', false) # ugly workaround for a bug
 	_air_movement(_delta)
 	tricks.set_air_trick()
 	if _grind_lip_check():

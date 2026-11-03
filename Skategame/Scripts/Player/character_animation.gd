@@ -60,12 +60,15 @@ func reset_vis_transform(_transform : Transform3D) -> void:
 	Char.global_transform = _transform
 
 func animation_handler_ground_pipe(_delta : float, _velocity : Vector3):
+	if get_tree_param('is_trick0') or get_tree_param('is_trick1'):
+		return
 	if _velocity.length() > 0.05:
 		anim_tree.set('parameters/conditions/is_riding', true)
 		anim_tree.set('parameters/conditions/is_stopped', false)
 	else:
 		anim_tree.set('parameters/conditions/is_riding', false)
 		anim_tree.set('parameters/conditions/is_stopped', true)
+	anim_tree.set('parameters/conditions/is_landed', false)
 	anim_tree.set('parameters/Ground/blend_position', anim_blend)
 	
 func set_ground_animation():

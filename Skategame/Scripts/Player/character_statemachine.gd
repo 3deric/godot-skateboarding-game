@@ -36,11 +36,12 @@ func on_child_transition(state : CharacterState, new_state_name : String):
 	var new_state = states.get(new_state_name.to_lower())
 	if !new_state:
 		return		
+	print("Transitioning to State: " + new_state.name)
 	if current_state:
 		current_state.exit()		
 	new_state.enter()
 	current_state = new_state
-	print("Transitioning to State: " + new_state.name)
+
 	
 func set_force_state(new_state_name : String):
 	previous_state = current_state
