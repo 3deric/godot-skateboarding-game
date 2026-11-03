@@ -265,7 +265,7 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_yf2u0"]
 states/End/position = Vector2(954, 82)
 states/Ground/node = SubResource("AnimationNodeBlendSpace2D_oonin")
-states/Ground/position = Vector2(478, 106)
+states/Ground/position = Vector2(493, 106)
 states/Ground_Landed/node = SubResource("AnimationNodeAnimation_v0dhu")
 states/Ground_Landed/position = Vector2(770.8791, 106)
 states/Idle/node = SubResource("AnimationNodeAnimation_irdet")
@@ -278,7 +278,7 @@ states/Trick0/position = Vector2(649, -3.9139557)
 states/Trick1/node = SubResource("AnimationNodeAnimation_12ptb")
 states/Trick1/position = Vector2(649, 202.08604)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_htr0u"), "Idle", "Ground", SubResource("AnimationNodeStateMachineTransition_77tjy"), "Ground", "Idle", SubResource("AnimationNodeStateMachineTransition_vggy6"), "Start", "Idle_Stand", SubResource("AnimationNodeStateMachineTransition_h8m4y"), "Ground", "Trick0", SubResource("AnimationNodeStateMachineTransition_6m2el"), "Trick0", "Ground", SubResource("AnimationNodeStateMachineTransition_euix3"), "Ground", "Trick1", SubResource("AnimationNodeStateMachineTransition_nw3ir"), "Trick1", "Ground", SubResource("AnimationNodeStateMachineTransition_a1rxb"), "Trick1", "Trick0", SubResource("AnimationNodeStateMachineTransition_i0ilm"), "Trick0", "Trick1", SubResource("AnimationNodeStateMachineTransition_xeb05"), "Idle", "Trick0", SubResource("AnimationNodeStateMachineTransition_12ptb"), "Idle", "Trick1", SubResource("AnimationNodeStateMachineTransition_8u1ju"), "Trick0", "Idle", SubResource("AnimationNodeStateMachineTransition_2s815"), "Trick1", "Idle", SubResource("AnimationNodeStateMachineTransition_m3sir"), "Idle_Stand", "Idle", SubResource("AnimationNodeStateMachineTransition_v0dhu"), "Idle", "Idle_Stand", SubResource("AnimationNodeStateMachineTransition_bdrer"), "Trick0", "Ground_Landed", SubResource("AnimationNodeStateMachineTransition_w6p7y"), "Trick1", "Ground_Landed", SubResource("AnimationNodeStateMachineTransition_e05f7"), "Ground_Landed", "Ground", SubResource("AnimationNodeStateMachineTransition_j5y83")]
-graph_offset = Vector2(-208.1209, -44.686195)
+graph_offset = Vector2(-48.120895, -64.686195)
 
 [node name="Player_Character" type="Node3D"]
 script = ExtResource("1_4pbxa")
@@ -2122,18 +2122,6 @@ script = ExtResource("16_euix3")
 
 [node name="AnimationTree" type="AnimationTree" parent="Systems"]
 unique_name_in_owner = true
-root_node = NodePath("%AnimationTree/../../Character_Visual/Char_Skeleton")
-tree_root = SubResource("AnimationNodeStateMachine_yf2u0")
-anim_player = NodePath("../../Character_Visual/Char_Skeleton/AnimationPlayer")
-parameters/conditions/is_landed = false
-parameters/conditions/is_riding = false
-parameters/conditions/is_setup = false
-parameters/conditions/is_stopped = false
-parameters/conditions/is_trick0 = false
-parameters/conditions/is_trick1 = false
-parameters/Ground/blend_position = Vector2(-0.003883481, 0.3800738)
-
-[node name="AnimationTree" type="AnimationTree" parent="Systems/AnimationTree"]
 root_node = NodePath("%AnimationTree/../../Character_Visual/Char_Skeleton")
 tree_root = SubResource("AnimationNodeStateMachine_yf2u0")
 anim_player = NodePath("../../Character_Visual/Char_Skeleton/AnimationPlayer")

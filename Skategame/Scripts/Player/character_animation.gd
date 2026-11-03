@@ -33,6 +33,7 @@ func _process(delta: float) -> void:
 
 func reset():
 	anim_tree.set('parameters/conditions/is_setup', false)
+	anim_tree.set('parameters/conditions/is_landed', false)
 	anim_tree.set('parameters/conditions/is_riding', false)
 	anim_tree.set('parameters/conditions/is_stopped', false)
 	anim_tree.set('parameters/conditions/is_trick0', false)
@@ -59,7 +60,6 @@ func reset_vis_transform(_transform : Transform3D) -> void:
 	Char.global_transform = _transform
 
 func animation_handler_ground_pipe(_delta : float, _velocity : Vector3):
-	pass
 	if _velocity.length() > 0.05:
 		anim_tree.set('parameters/conditions/is_riding', true)
 		anim_tree.set('parameters/conditions/is_stopped', false)
@@ -99,3 +99,9 @@ func set_trick_animation(animation: String) -> void:
 		anim_tree.set('parameters/conditions/is_trick0',false)
 		anim_tree.set('parameters/conditions/is_trick1',true)
 	print(animation)
+	
+func get_tree_param(param : String) -> bool:
+	return anim_tree.get('parameters/conditions/' + param)
+	
+func set_tree_param(param : String , value : bool) -> void:
+	anim_tree.set('parameters/conditions/' + param, value)

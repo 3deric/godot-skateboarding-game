@@ -13,6 +13,8 @@ func exit():
 	tricks.set_end_trick()
 
 func physics_update(_delta : float):
+	if anim.get_tree_param('is_riding'):
+		anim.set_tree_param('is_riding', false) # ugly workaround for a bug
 	_air_movement(_delta)
 	tricks.set_air_trick()
 	if _grind_lip_check():
@@ -46,7 +48,6 @@ func _ground_check() -> void:
 			return
 		if _coll_info.is_in_group('pipe'):
 			transitioned.emit(self, "Player_Pipe")
-			anim.set_ground_landed()
 			return
 		if ctrl.up_direction.dot(Vector3.UP) < 0.5:
 			return
